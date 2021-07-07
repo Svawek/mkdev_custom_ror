@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: mkdev_custom_ror_development
+
+test:
+  <<: *default
+  database: mkdev_custom_ror_test
+
+production:
+  <<: *default
+  database: mkdev_custom_ror_production
+  username: mkdev_custom_ror
+  password: <%= ENV['MKDEV_CUSTOM_ROR_DATABASE_PASSWORD'] %>
