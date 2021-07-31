@@ -1,0 +1,51 @@
+.row
+  h1 Events List
+  .col-md-2
+    = link_to '+ Add new event', new_event_path, class: 'btn btn-primary'
+
+/ .row
+/   - @events.each_with_index do |event, i|
+/     p event.title
+
+table.table
+  thead
+    tr
+      th[scope="col"]
+        | #
+      th[scope="col"]
+        | Title
+      th[scope="col"]
+        | Description
+      th[scope="col"]
+        | Location
+      th[scope="col"]
+        | Start time
+      th[scope="col"]
+        | End time
+      th[scope="col"]
+        | Organizer email
+      th[scope="col"]
+        | Organizer telegram
+      th[scope="col"]
+        | Link
+      th[scope="col"]
+        | Actions
+  tbody
+    - @events.each_with_index do |event, i|
+      - start_index = params[:page].to_i > 1 ? ((params[:page].to_i - 1) * @events.limit_value + 1) : 1
+      tr
+        th[scope="row"]
+          | #{i + start_index}
+        td = event.title
+        td = event.description
+        td = event.location
+        td = event.starttime.strftime("%R %d.%m.%y")
+        td = event.endtime.strftime("%R %d.%m.%y")
+        td = event.organizeremail
+        td = event.organizertelegram
+        td = event.link
+        td
+          = link_to 'Edit', edit_event_path(event), class: 'btn btn-info'
+          = link_to 'Delete', event_path(event), method: :delete, data: { confirm: 'Delete event?' }, class: 'btn btn-danger'
+
+= paginate @events

@@ -1,0 +1,13 @@
+.row
+  = simple_form_for @event do |f|
+    = f.input :title
+    = f.input :description, as: :text
+    = f.input :location
+    = f.input :starttime, as: :datetime
+    = f.input :endtime, as: :datetime
+    = f.input :organizeremail
+    = f.input :organizertelegram
+    = f.input :link
+
+    = f.button :submit, 'Save', class: 'btn btn-success'
+    = link_to 'Cancel', events_path, class: 'btn btn-secondary'
