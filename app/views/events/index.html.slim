@@ -1,0 +1,47 @@
+.row
+  h1 Events List
+  .col-md-2
+    = link_to t('.add_new_event'), new_event_path, class: 'btn btn-primary'
+
+table.table
+  thead
+    tr
+      th[scope="col"]
+        | #
+      th[scope="col"]
+        = t('.title')
+      th[scope="col"]
+        = t('.description')
+      th[scope="col"]
+        = t('.location')
+      th[scope="col"]
+        = t('.start_time')
+      th[scope="col"]
+        = t('.end_time')
+      th[scope="col"]
+        = t('.organizer_email')
+      th[scope="col"]
+        = t('.organizer_telegram')
+      th[scope="col"]
+        = t('.link')
+      th[scope="col"]
+        = t('.actions')
+  tbody
+    - @events.each_with_index do |event, i|
+      - start_index = params[:page].to_i > 1 ? ((params[:page].to_i - 1) * @events.limit_value + 1) : 1
+      tr
+        th[scope="row"]
+          | #{i + start_index}
+        td = event.title
+        td = event.description
+        td = event.location
+        td = event.starttime.strftime("%R %d.%m.%y")
+        td = event.endtime.strftime("%R %d.%m.%y")
+        td = event.organizeremail
+        td = event.organizertelegram
+        td = event.link
+        td
+          = link_to t('.edit'), edit_event_path(event), class: 'btn btn-info'
+          = link_to t('.delete'), event_path(event), method: :delete, data: { confirm: t('.delete_event') }, class: 'btn btn-danger'
+
+= paginate @events
