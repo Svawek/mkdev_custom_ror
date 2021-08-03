@@ -14,6 +14,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem "slim-rails"
 gem 'simple_form'
 gem 'kaminari'
+gem 'travis'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
