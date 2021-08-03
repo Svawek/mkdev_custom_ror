@@ -1,0 +1,59 @@
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://docs.rubocop.org/rubocop/configuration
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+Rails:
+  Enabled: true
+AllCops:
+  NewCops: enable
+  Exclude:
+   - 'bin/*'
+   - 'db/seeds.rb'
+   - 'db/schema.rb'
+   - 'vendor/bundle/**/*'
+   - 'config/application.rb'
+   - 'config/routes.rb'
+   - 'config/environments/*'
+   - 'config/initializers/*'
+   - 'db/migrate/*'
+   - '**/spec/spec_helper.rb'
+   - '**/spec/rails_helper.rb'
+   - '**/Rakefile'
+   - '**/lib/**/*'
+   - '**/tmp/cache/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 10
+
+Style/RedundantFetchBlock:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
