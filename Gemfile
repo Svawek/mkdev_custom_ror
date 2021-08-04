@@ -38,6 +38,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rexml'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
