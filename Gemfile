@@ -11,13 +11,13 @@ gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4'
 gem 'sass-rails', '>= 6'
 gem 'simple_form'
-gem "slim-rails"
+gem 'slim-rails'
 gem 'travis'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
-  gem "annotate"
+  gem 'annotate'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0.0'
@@ -38,8 +38,8 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rexml'
   gem 'selenium-webdriver'
-  gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
 
