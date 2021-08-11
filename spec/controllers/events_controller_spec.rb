@@ -42,6 +42,7 @@ RSpec.describe EventsController, type: :controller do
       it 'saves a new event in the database' do
         expect { post :create, params: { event: attributes_for(:event) } }.to change(Event, :count).by(1)
       end
+
       it 'redirects to index view' do
         post :create, params: { event: attributes_for(:event) }
         expect(response).to redirect_to assigns(:events)
@@ -50,7 +51,7 @@ RSpec.describe EventsController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not save event' do
-        expect { post :create, params: { event: attributes_for(:event, :invalid) } }.to_not change(Event, :count)
+        expect { post :create, params: { event: attributes_for(:event, :invalid) } }.not_to change(Event, :count)
       end
 
       it 're-renders new view' do
@@ -68,11 +69,10 @@ RSpec.describe EventsController, type: :controller do
       end
 
       it 'change event attributes' do
-        patch :update, params: { id: event, event: { location: 'skype', organizertelegram: '@private_event' } }
+        patch :update, params: { id: event, event: { location: 'skype' } }
         event.reload
 
         expect(event.location).to eq 'skype'
-        expect(event.organizertelegram).to eq '@private_event'
       end
 
       it 'redirects to index view' do

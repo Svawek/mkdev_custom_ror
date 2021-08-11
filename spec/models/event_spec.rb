@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :location }
-  it { should validate_presence_of :starttime }
-  it { should validate_presence_of :organizeremail }
-  it { should validate_presence_of :organizertelegram }
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :location }
+  it { is_expected.to validate_presence_of :starttime }
+  it { is_expected.to validate_presence_of :organizeremail }
+  it { is_expected.to validate_presence_of :organizertelegram }
 end
 
 # == Schema Information
